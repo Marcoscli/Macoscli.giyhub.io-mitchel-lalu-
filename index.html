@@ -28,16 +28,24 @@
 
     h1 {
       color: #764ba2;
+      margin-bottom: 8px;
     }
 
-    h2 {
-      color: #667eea;
-      margin-top: 25px;
+    .valentine {
+      color: #e91e63;
+      font-size: 22px;
+      margin: 15px 0;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
 
     p {
       font-size: 16px;
-      line-height: 1.6;
       color: #333;
     }
 
@@ -45,42 +53,102 @@
       width: 100%;
       max-width: 320px;
       border-radius: 16px;
-      margin: 15px 0;
+      margin: 12px 0;
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
-    audio {
-      width: 100%;
-      margin-bottom: 20px;
+    .buttons {
+      margin-top: 15px;
+    }
+
+    button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .yes {
+      background: #e91e63;
+      color: white;
+    }
+
+    .no {
+      background: #ccc;
+      color: #333;
+    }
+
+    .message {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #e91e63;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tap {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
+  <!-- Background music -->
+  <audio id="bgMusic" autoplay muted loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
 
-    <audio controls loop>
-      <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
+  <div class="card" onclick="playMusic()">
 
     <h1>Hey Mitchel ❤️</h1>
-    <p>I made something to make you smile</p>
 
-    <h2>lemme be the first one to say this...</h2>
+    <div class="valentine">Will you be my Valentine? 💖</div>
 
-    <img src="assets/memory1.jpg" alt="Memory 1">
-    <img src="assets/memory2.jpg" alt="Memory 2">
-    <img src="assets/memory3.jpg" alt="Memory 3">
+    <div class="buttons">
+      <button class="yes" onclick="accept(event)">YES 💘</button>
+      <button class="no" onclick="decline(event)">NO 🙈</button>
+    </div>
 
-    <p>Every laugh meant something.</p>
-    <p>Another memory to treasure…</p>
+    <div class="message" id="message">
+      I knew you would accept it ❤️<br>
+      I love you lalu 💖
+    </div>
 
-    <h2>Mitchel, this is for you ❤️</h2>
-    <p><strong>Happy here always!!</strong></p>
+    <img src="assets/memory1.jpg" alt="">
+    <img src="assets/memory2.jpg" alt="">
+    <img src="assets/memory3.jpg" alt="">
+
+    <div class="tap">(tap anywhere to play music 🎵)</div>
 
   </div>
 
+  <script>
+    function playMusic() {
+      const music = document.getElementById("bgMusic");
+      music.muted = false;
+      music.play();
+    }
+
+    function accept(e) {
+      e.stopPropagation();
+      document.getElementById("message").style.display = "block";
+      playMusic();
+    }
+
+    function decline(e) {
+      e.stopPropagation();
+      alert("Take your time 💕");
+    }
+  </script>
+
 </body>
 </html>
-
-
