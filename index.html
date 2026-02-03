@@ -8,144 +8,82 @@
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card {
+      font-family: Arial, sans-serif;
       background: white;
-      max-width: 420px;
-      width: 90%;
-      padding: 24px;
-      border-radius: 20px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
-
-    h1 {
-      color: #764ba2;
-      margin-bottom: 8px;
-    }
-
-    .valentine {
-      color: #e91e63;
-      font-size: 22px;
-      margin: 15px 0;
-      animation: pulse 1.5s infinite;
-    }
-
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    p {
-      font-size: 16px;
+    h1, h2, p {
+      margin: 12px 0;
       color: #333;
     }
-
+    .hidden {
+      display: none;
+    }
     img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 16px;
+      width: 80%;
+      max-width: 300px;
       margin: 12px 0;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      border-radius: 12px;
     }
-
-    .buttons {
-      margin-top: 15px;
-    }
-
     button {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 20px;
+      padding: 10px 20px;
+      margin: 8px;
       font-size: 16px;
+      border-radius: 20px;
+      border: none;
       cursor: pointer;
-      margin: 5px;
     }
-
     .yes {
       background: #e91e63;
       color: white;
     }
-
     .no {
       background: #ccc;
       color: #333;
-    }
-
-    .message {
-      display: none;
-      margin-top: 20px;
-      font-size: 18px;
-      color: #e91e63;
-      animation: fadeIn 1s forwards;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .tap {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #888;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background music -->
-  <audio id="bgMusic" autoplay muted loop>
+  <audio id="music" autoplay muted loop>
     <source src="assets/music.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="card" onclick="playMusic()">
+  <h1>Hey Mitchel ❤️</h1>
+  <p>I made something to make you smile</p>
+  <p><em>Click to continue</em></p>
 
-    <h1>Hey Mitchel ❤️</h1>
+  <div id="photos">
+    <img src="assets/memory1.jpg" alt="Photo 1">
+    <p>Photo 1</p>
 
-    <div class="valentine">Will you be my Valentine? 💖</div>
+    <img src="assets/memory2.jpg" alt="Photo 2">
+    <p>Photo 2</p>
 
-    <div class="buttons">
-      <button class="yes" onclick="accept(event)">YES 💘</button>
-      <button class="no" onclick="decline(event)">NO 🙈</button>
-    </div>
+    <img src="assets/memory3.jpg" alt="Photo 3">
+    <p>Photo 3</p>
+  </div>
 
-    <div class="message" id="message">
-      I knew you would accept it ❤️<br>
-      I love you lalu 💖
-    </div>
+  <h2>Mitchel, will you be my Valentine?</h2>
 
-    <img src="assets/memory1.jpg" alt="">
-    <img src="assets/memory2.jpg" alt="">
-    <img src="assets/memory3.jpg" alt="">
+  <button class="yes" onclick="accepted()">YES ❤️</button>
+  <button class="no" onclick="declined()">NO 🙈</button>
 
-    <div class="tap">(tap anywhere to play music 🎵)</div>
-
+  <div id="finalMessage" class="hidden">
+    <h2>Good Choice!!</h2>
+    <p>I knew you would accept it ❤️</p>
+    <p>I love you, lalu 💖</p>
+    <p>Happy upcoming Valentine’s Day ❤️</p>
   </div>
 
   <script>
-    function playMusic() {
-      const music = document.getElementById("bgMusic");
-      music.muted = false;
-      music.play();
+    function accepted() {
+      document.getElementById("finalMessage").classList.remove("hidden");
+      document.getElementById("photos").classList.add("hidden");
+      document.getElementById("music").muted = false;
     }
-
-    function accept(e) {
-      e.stopPropagation();
-      document.getElementById("message").style.display = "block";
-      playMusic();
-    }
-
-    function decline(e) {
-      e.stopPropagation();
+    function declined() {
       alert("Take your time 💕");
     }
   </script>
