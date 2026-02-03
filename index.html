@@ -1,361 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For Mitchell ❤️</title>
-    <style>
-        body {
-            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
-            background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);
-            color: #333;
-            text-align: center;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            min-height: 100vh;
-        }
-        h1 {
-            color: #ff4081;
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #e91e63;
-            font-size: 2em;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-        .intro {
-            font-size: 1.3em;
-            color: #d81b60;
-            margin-bottom: 30px;
-            font-weight: bold;
-        }
-        .music-player {
-            background: linear-gradient(145deg, #fce4ec, #f8bbd9);
-            border: 3px solid #f48fb1;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 30px 0;
-            box-shadow: 0 8px 20px rgba(244, 143, 177, 0.3);
-        }
-        .music-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 15px;
-        }
-        .music-btn {
-            background: linear-gradient(135deg, #ff4081, #e91e63);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .music-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
-        }
-        .volume-control {
-            width: 100px;
-            margin: 0 10px;
-        }
-        .song-title {
-            font-size: 1.2em;
-            color: #c2185b;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        .photo-container {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin: 30px 0;
-        }
-        .photo-item {
-            background: linear-gradient(145deg, #fce4ec, #f8bbd9);
-            border: 3px solid #f48fb1;
-            border-radius: 15px;
-            height: 250px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            color: #c2185b;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(244, 143, 177, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            overflow: hidden;
-        }
-        .photo-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(244, 143, 177, 0.4);
-        }
-        .photo-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-        }
-        .message {
-            background: linear-gradient(145deg, #f8bbd9, #f48fb1);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            font-size: 1.3em;
-            line-height: 1.7;
-            color: white;
-            box-shadow: 0 6px 15px rgba(233, 30, 99, 0.2);
-        }
-        .valentine-question {
-            background: linear-gradient(135deg, #ff4081, #e91e63);
-            color: white;
-            padding: 25px;
-            border-radius: 20px;
-            font-size: 2.2em;
-            margin: 40px 0;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.4);
-        }
-        .valentine-question:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(255, 64, 129, 0.5);
-        }
-        .response {
-            display: none;
-            background: linear-gradient(135deg, #4caf50, #2e7d32);
-            color: white;
-            padding: 30px;
-            border-radius: 20px;
-            font-size: 2.2em;
-            margin: 40px 0;
-            animation: fadeIn 1s;
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
-        }
-        .heart-container {
-            margin: 40px 0;
-        }
-        .heart {
-            font-size: 4em;
-            display: inline-block;
-            animation: heartbeat 1.5s infinite;
-            text-shadow: 0 0 20px rgba(255, 64, 129, 0.6);
-        }
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .footer {
-            margin-top: 40px;
-            color: #e91e63;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .photo-placeholder-text {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px 20px;
-            border-radius: 10px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Hey Mitchell ❤️</h1>
-    <p class="intro">I made something to make you smile</p>
-    
-    <!-- Music Player Section -->
-    <div class="music-player">
-        <h3>Our Song 💖</h3>
-        <div class="music-controls">
-            <button class="music-btn" onclick="playPause()" id="playBtn">▶️</button>
-            <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" id="volumeControl" onchange="changeVolume()">
-            <button class="music-btn" onclick="stopMusic()">⏹️</button>
-        </div>
-        <div class="song-title" id="songTitle">Loading song...</div>
-        <audio id="bgMusic" loop>
-            <source src="https://assets.mixkit.co/music/preview/mixkit-valentine-521.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+<!-- Add this section right after the intro -->
+<div class="music-player">
+    <h3>Our Song 💖</h3>
+    <div class="music-controls">
+        <button class="music-btn" onclick="playPause()" id="playBtn">▶️</button>
+        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" id="volumeControl" onchange="changeVolume()">
+        <button class="music-btn" onclick="stopMusic()">⏹️</button>
     </div>
+    <div class="song-title" id="songTitle">Perfect - Ed Sheeran</div>
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-valentine-521.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<style>
+    .music-player {
+        background: linear-gradient(145deg, #fce4ec, #f8bbd9);
+        border: 3px solid #f48fb1;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 30px 0;
+        box-shadow: 0 8px 20px rgba(244, 143, 177, 0.3);
+    }
+    .music-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 15px;
+    }
+    .music-btn {
+        background: linear-gradient(135deg, #ff4081, #e91e63);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .music-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
+    }
+    .volume-control {
+        width: 100px;
+        margin: 0 10px;
+    }
+    .song-title {
+        font-size: 1.2em;
+        color: #c2185b;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    // Add this script to your existing JavaScript
+    const bgMusic = document.getElementById('bgMusic');
+    const playBtn = document.getElementById('playBtn');
+    const volumeControl = document.getElementById('volumeControl');
     
-    <h2>lemme be the first one to say this...</h2>
-    
-    <div class="photo-container">
-        <!-- Photo 1 -->
-        <div class="photo-item">
-            <img src="https://marcoscli.github.io/Macoscli.giyhub.io/assets/images/photo1.jpg" 
-                 alt="Beautiful memory with Mitchell"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder-text\'>Photo 1</div>'">
-        </div>
-        
-        <!-- Photo 2 -->
-        <div class="photo-item">
-            <img src="https://marcoscli.github.io/Macoscli.giyhub.io/assets/images/photo2.jpg" 
-                 alt="Special moment with Mitchell"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder-text\'>Photo 2</div>'">
-        </div>
-        
-        <!-- Photo 3 -->
-        <div class="photo-item">
-            <img src="https://marcoscli.github.io/Macoscli.giyhub.io/assets/images/photo3.jpg" 
-                 alt="Happy time with Mitchell"
-                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder-text\'>Photo 3</div>'">
-        </div>
-    </div>
-    
-    <div class="message">
-        <p>Every laugh meant something.</p>
-        <p>Another valentine to do this....</p>
-    </div>
-    
-    <div class="valentine-question" onclick="showResponse()">
-        Mitchell, will you be my valentine? 😍
-    </div>
-    
-    <div id="response" class="response">
-        Good Choice 😍!!
-        <p style="font-size: 0.8em; margin-top: 15px;">Happy upcoming Valentine's Day To you</p>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart">💖</div>
-    </div>
-    
-    <div class="footer">
-        Made with ❤️ for Mitchell
-    </div>
-    
-    <script>
-        // Music Player Functions
-        const bgMusic = document.getElementById('bgMusic');
-        const playBtn = document.getElementById('playBtn');
-        const volumeControl = document.getElementById('volumeControl');
-        const songTitle = document.getElementById('songTitle');
-        
-        // Romantic song suggestions (you can replace with your own)
-        const romanticSongs = [
-            {title: "Perfect - Ed Sheeran", url: "https://assets.mixkit.co/music/preview/mixkit-valentine-521.mp3"},
-            {title: "All of Me - John Legend", url: "https://assets.mixkit.co/music/preview/mixkit-romantic-announcement-521.mp3"},
-            {title: "Can't Help Falling in Love", url: "https://assets.mixkit.co/music/preview/mixkit-sunny-love-song-52.mp3"}
-        ];
-        
-        // Set a random romantic song
-        function setRandomSong() {
-            const randomSong = romanticSongs[Math.floor(Math.random() * romanticSongs.length)];
-            bgMusic.src = randomSong.url;
-            songTitle.textContent = randomSong.title;
-        }
-        
-        function playPause() {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                playBtn.innerHTML = "⏸️";
-                playBtn.style.background = "linear-gradient(135deg, #e91e63, #ff4081)";
-            } else {
-                bgMusic.pause();
-                playBtn.innerHTML = "▶️";
-                playBtn.style.background = "linear-gradient(135deg, #ff4081, #e91e63)";
-            }
-        }
-        
-        function stopMusic() {
+    function playPause() {
+        if (bgMusic.paused) {
+            bgMusic.play();
+            playBtn.innerHTML = "⏸️";
+            playBtn.style.background = "linear-gradient(135deg, #e91e63, #ff4081)";
+        } else {
             bgMusic.pause();
-            bgMusic.currentTime = 0;
             playBtn.innerHTML = "▶️";
             playBtn.style.background = "linear-gradient(135deg, #ff4081, #e91e63)";
         }
+    }
+    
+    function stopMusic() {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        playBtn.innerHTML = "▶️";
+        playBtn.style.background = "linear-gradient(135deg, #ff4081, #e91e63)";
+    }
+    
+    function changeVolume() {
+        bgMusic.volume = volumeControl.value;
+    }
+    
+    // Update showResponse function to play music
+    function showResponse() {
+        const response = document.getElementById('response');
+        const question = document.querySelector('.valentine-question');
         
-        function changeVolume() {
-            bgMusic.volume = volumeControl.value;
-        }
+        response.style.display = 'block';
+        question.style.display = 'none';
         
-        // Valentine Response Function
-        function showResponse() {
-            const response = document.getElementById('response');
-            const question = document.querySelector('.valentine-question');
-            
-            response.style.display = 'block';
-            question.style.display = 'none';
-            
-            // Play romantic music automatically when she says yes
-            if (bgMusic.paused) {
-                setRandomSong();
-                bgMusic.play();
-                playBtn.innerHTML = "⏸️";
-                playBtn.style.background = "linear-gradient(135deg, #e91e63, #ff4081)";
-            }
-            
-            // Scroll to the response
-            response.scrollIntoView({ behavior: 'smooth' });
-            
-            // Add floating hearts animation
-            createHearts();
-        }
+        // Play music automatically when she says yes
+        bgMusic.play();
+        playBtn.innerHTML = "⏸️";
+        playBtn.style.background = "linear-gradient(135deg, #e91e63, #ff4081)";
         
-        function createHearts() {
-            const container = document.querySelector('.heart-container');
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.innerHTML = '💖';
-                    heart.style.position = 'fixed';
-                    heart.style.fontSize = Math.random() * 20 + 20 + 'px';
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.top = '100vh';
-                    heart.style.zIndex = '9999';
-                    heart.style.opacity = '0.8';
-                    heart.style.pointerEvents = 'none';
-                    
-                    document.body.appendChild(heart);
-                    
-                    // Animate heart floating up
-                    const animation = heart.animate([
-                        { transform: 'translateY(0) rotate(0deg)', opacity: 0.8 },
-                        { transform: `translateY(-${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
-                    ], {
-                        duration: Math.random() * 2000 + 2000,
-                        easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-                    });
-                    
-                    animation.onfinish = () => heart.remove();
-                }, i * 200);
-            }
-        }
-        
-        // Check if images exist and show appropriate message
-        window.addEventListener('load', function() {
-            const images = document.querySelectorAll('.photo-item img');
-            images.forEach(img => {
-                if (img.naturalHeight === 0) {
-                    img.style.display = 'none';
-                    img.parentElement.innerHTML = '<div class="photo-placeholder-text">' + 
-                        (img.alt.includes('1') ? 'Photo 1' : 
-                         img.alt.includes('2') ? 'Photo 2' : 'Photo 3') + 
-                        '</div>';
-                }
-            });
-            
-            // Initialize music player
-            setRandomSong();
-            bgMusic.volume = 0.5;
-        });
-    </script>
-</body>
-    </html>
+        response.scrollIntoView({ behavior: 'smooth' });
+        createHearts();
+    }
+</script>
