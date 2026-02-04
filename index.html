@@ -1,106 +1,65 @@
-<!-- Add this section right after the intro -->
-<div class="music-player">
-    <h3>Our Song 💖</h3>
-    <div class="music-controls">
-        <button class="music-btn" onclick="playPause()" id="playBtn">▶️</button>
-        <input type="range" class="volume-control" min="0" max="1" step="0.1" value="0.5" id="volumeControl" onchange="changeVolume()">
-        <button class="music-btn" onclick="stopMusic()">⏹️</button>
-    </div>
-    <div class="song-title" id="songTitle">Perfect - Ed Sheeran</div>
-    <audio id="bgMusic" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-valentine-521.mp3" type="audio/mpeg">
-    </audio>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Mitchel ❤️</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 2rem;
+      background: #fff;
+      color: #000;
+    }
+    img {
+      max-width: 80%;
+      height: auto;
+      margin: 1rem 0;
+    }
+    h1, h2, h3 {
+      margin: 1rem 0;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #e00;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body>
 
-<style>
-    .music-player {
-        background: linear-gradient(145deg, #fce4ec, #f8bbd9);
-        border: 3px solid #f48fb1;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 30px 0;
-        box-shadow: 0 8px 20px rgba(244, 143, 177, 0.3);
-    }
-    .music-controls {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 20px;
-        margin-top: 15px;
-    }
-    .music-btn {
-        background: linear-gradient(135deg, #ff4081, #e91e63);
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 1.5em;
-        cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .music-btn:hover {
-        transform: scale(1.1);
-        box-shadow: 0 4px 15px rgba(255, 64, 129, 0.5);
-    }
-    .volume-control {
-        width: 100px;
-        margin: 0 10px;
-    }
-    .song-title {
-        font-size: 1.2em;
-        color: #c2185b;
-        font-weight: bold;
-        margin-top: 10px;
-    }
-</style>
+  <h1>Hey Mitchel ❤️</h1>
+  <p>I made something to make you smile</p>
+  <p>Click to continue</p>
 
-<script>
-    // Add this script to your existing JavaScript
-    const bgMusic = document.getElementById('bgMusic');
-    const playBtn = document.getElementById('playBtn');
-    const volumeControl = document.getElementById('volumeControl');
-    
-    function playPause() {
-        if (bgMusic.paused) {
-            bgMusic.play();
-            playBtn.innerHTML = "⏸️";
-            playBtn.style.background = "linear-gradient(135deg, #e91e63, #ff4081)";
-        } else {
-            bgMusic.pause();
-            playBtn.innerHTML = "▶️";
-            playBtn.style.background = "linear-gradient(135deg, #ff4081, #e91e63)";
-        }
-    }
-    
-    function stopMusic() {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-        playBtn.innerHTML = "▶️";
-        playBtn.style.background = "linear-gradient(135deg, #ff4081, #e91e63)";
-    }
-    
-    function changeVolume() {
-        bgMusic.volume = volumeControl.value;
-    }
-    
-    // Update showResponse function to play music
-    function showResponse() {
-        const response = document.getElementById('response');
-        const question = document.querySelector('.valentine-question');
-        
-        response.style.display = 'block';
-        question.style.display = 'none';
-        
-        // Play music automatically when she says yes
-        bgMusic.play();
-        playBtn.innerHTML = "⏸️";
-        playBtn.style.background = "linear-gradient(135deg, #e91e63, #ff4081)";
-        
-        response.scrollIntoView({ behavior: 'smooth' });
-        createHearts();
-    }
-</script>
+  <!-- Replace `image1.jpg`, etc. with your images in the repo -->
+  <img src="image1.jpg" alt="Memory 1">
+  <p>Photo 1</p>
+
+  <img src="image2.jpg" alt="Memory 2">
+  <p>Photo 2</p>
+
+  <img src="image3.jpg" alt="Memory 3">
+  <p>Photo 3</p>
+
+  <p>Every laugh meant something.</p>
+
+  <h2>Another valentine to do this…</h2>
+
+  <h1>Mitchel, will you be my valentine?</h1>
+
+  <h1>YES ❤️ YES</h1>
+
+  <h2>Good Choice!!</h2>
+  <p>Happy upcoming Valentine’s Day to you</p>
+
+  <a href="#" class="button">Next ❤️</a>
+
+</body>
+</html>
